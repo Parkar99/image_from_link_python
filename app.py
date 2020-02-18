@@ -3,7 +3,7 @@ import re
 import urllib
 from openpyxl import load_workbook
 
-book = load_workbook("image_links.xlsx")
+book = load_workbook('image_links.xlsx')
 sheet = book.active
 for row in sheet.rows:
     for cell in row:

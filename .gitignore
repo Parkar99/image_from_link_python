@@ -1,5 +1,6 @@
-.vscode
-env
-images
+.vscode/
+env/
+images/
+
 image_links.xlsx
 images.zip
