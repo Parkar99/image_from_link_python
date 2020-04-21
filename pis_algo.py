@@ -12,8 +12,14 @@ if not os.path.exists(image_dir):
     os.mkdir(image_dir)
 
 for r_number, row in enumerate(sheet.rows):
+    sku = sheet.cell(row=r_number + 1, column=1).value
+    sku_folder = os.path.join(image_dir, sku)
+
     for cell in row:
         if str(cell.value).startswith('http'):
+            if not os.path.exists(sku_folder):
+                os.mkdir(sku_folder)
+
             image = cell.value
             image = image[:-1] + '1'
 
@@ -24,5 +30,5 @@ for r_number, row in enumerate(sheet.rows):
 
             print(f'Downloading {file_name}')
             image_data = requests.get(image).content
-            with open(f'images/{file_name}', 'wb') as file:
+            with open(f'images/{sku}/{file_name}', 'wb') as file:
                 file.write(image_data)
