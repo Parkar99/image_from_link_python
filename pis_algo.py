@@ -20,7 +20,7 @@ for r_number, row in enumerate(sheet.rows):
             if not os.path.exists(sku_folder):
                 os.mkdir(sku_folder)
 
-            image = cell.value
+            image = (cell.value).strip()
             image = image[:-1] + '1'
 
             file_name_data = re.search(
@@ -28,6 +28,7 @@ for r_number, row in enumerate(sheet.rows):
             )
             file_name = urllib.parse.unquote(file_name_data.group(0))
 
+            print(f'Found {image} on row {r_number + 1}')
             print(f'Downloading {file_name}')
             image_data = requests.get(image).content
             with open(f'images/{sku}/{file_name}', 'wb') as file:
