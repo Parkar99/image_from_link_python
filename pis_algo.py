@@ -4,7 +4,9 @@ import re
 import urllib
 from openpyxl import load_workbook
 
-book = load_workbook('image_links.xlsx')
+FILE_NAME = 'image_links.xlsx'
+
+book = load_workbook(FILE_NAME)
 sheet = book.active
 
 image_dir = os.path.join(os.path.dirname(__file__), 'images')
